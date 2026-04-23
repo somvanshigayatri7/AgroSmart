@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Crop Planner</title>
+
+  <style>
+  body {
+    font-family: Arial;
+    margin: 0;
+    background: linear-gradient(to right, #56ab2f, #a8e063);
+    transition: 0.4s;
+  }
+
+  .dark {
+    background: #121212;
+    color: white;
+  }
+
+  h1 {
+    text-align: center;
+    color: white;
+    padding: 20px;
+  }
+.back {
+  display: inline-block;
+  margin: 10px 20px;
+  padding: 10px 18px;
+  background: white;
+  color: black;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.back:hover {
+  background: #dcedc8;
+  transform: scale(1.05);
+}
+
+  /* TOP BAR */
+  .top {
+    text-align: center;
+    margin: 10px;
+  }
+
+  .top button, .back {
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    background: white;
+    color: black;
+    font-weight: bold;
+  }
+
+  /* GRID */
+  .crops {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .crop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .crop:hover {
+    transform: scale(1.05);
+    background: #dcedc8;
+  }
+
+  .icon {
+    font-size: 40px;
+    pointer-events: none;
+  }
+
+  .crop span {
+    pointer-events: none;
+  }
+
+  /* DETAILS */
+  .details {
+    padding: 20px;
+    display: none;
+  }
+
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    animation: fade 0.5s;
+  }
+
+  .card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  @keyframes fade {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1;}
+  }
+
+  </style>
+</head>
+
+<body id="body">
+
+
+<h1>🌾 स्मार्ट पिक नियोजन</h1>
+<a href="index.html">⬅ Home</a>
+<div class="crops">
+
+<div class="crop" onclick="show('tomato')">
+  <span class="icon">🍅</span>
+  <span>Tomato (टोमॅटो)</span>
+</div>
+
+<div class="crop" onclick="show('rice')">
+  <span class="icon">🌾</span>
+  <span>Rice (तांदूळ)</span>
+</div>
+
+<div class="crop" onclick="show('wheat')">
+  <span class="icon">🌿</span>
+  <span>Wheat (गहू)</span>
+</div>
+
+<div class="crop" onclick="show('corn')">
+  <span class="icon">🌽</span>
+  <span>Corn (मका)</span>
+</div>
+
+<div class="crop" onclick="show('cotton')">
+  <span class="icon">🌼</span>
+  <span>Cotton (कापूस)</span>
+</div>
+
+<div class="crop" onclick="show('sugarcane')">
+  <span class="icon">🎋</span>
+  <span>Sugarcane (ऊस)</span>
+</div>
+
+<div class="crop" onclick="show('potato')">
+  <span class="icon">🥔</span>
+  <span>Potato (बटाटा)</span>
+</div>
+
+<div class="crop" onclick="show('onion')">
+  <span class="icon">🧅</span>
+  <span>Onion (कांदा)</span>
+</div>
+
+<div class="crop" onclick="show('carrot')">
+  <span class="icon">🥕</span>
+  <span>Carrot (गाजर)</span>
+</div>
+
+<div class="crop" onclick="show('soybean')">
+  <span class="icon">🌱</span>
+  <span>Soybean (सोयाबीन)</span>
+</div>
+
+</div>
+<!-- DETAILS -->
+<div class="details" id="details">
+  <div class="card" id="card"></div>
+</div>
+
+<script>
+
+let lang = "en";
+
+function setLang(l){
+  lang = l;
+}
+
+function toggleMode(){
+  document.getElementById("body").classList.toggle("dark");
+}
+
+function show(crop){
+
+const data = {
+
+tomato: {
+
+en:`🍅 Tomato<br>Soil: Loamy<br>Sowing: Feb-March<br>Water: Moderate<br>Harvest: 60-80 days<br>Pesticide: Neem Oil`,
+mr:`🍅 टोमॅटो<br>माती: लोमी<br>पेरणी: फेब्रुवारी-मार्च<br>पाणी: मध्यम<br>कापणी: 60-80 दिवस<br>कीटकनाशक: निम तेल`
+},
+
+rice: {
+
+en:`🌾 Rice<br>Soil: Clay<br>Sowing: June-July<br>Water: High<br>Harvest: 3-4 months<br>Pesticide: Trichoderma`,
+mr:`🌾 तांदूळ<br>माती: चिकण<br>पेरणी: जून-जुलै<br>पाणी: जास्त<br>कापणी: 3-4 महिने<br>कीटकनाशक: ट्रायकोडर्मा`
+},
+
+wheat: {
+
+en:`🌿 Wheat<br>Soil: Loamy<br>Sowing: Oct-Nov<br>Water: Low<br>Harvest: 4 months<br>Pesticide: Garlic Spray`,
+mr:`🌿 गहू<br>माती: लोमी<br>पेरणी: ऑक्टोबर-नोव्हेंबर<br>पाणी: कमी<br>कापणी: 4 महिने<br>कीटकनाशक: लसूण स्प्रे`
+},
+
+corn: {
+en:`🌽 Corn<br>Soil: Well-drained<br>Sowing: June<br>Harvest: 3 months<br>Pesticide: Neem Spray`,
+mr:`🌽 मका<br>माती: निचरा चांगला<br>पेरणी: जून<br>कापणी: 3 महिने<br>कीटकनाशक: निम स्प्रे`
+},
+
+cotton: {
+en:`🌼 Cotton<br>Soil: Black soil<br>Sowing: May-June<br>Harvest: 5 months<br>Pesticide: Neem Oil`,
+mr:`🌼 कापूस<br>माती: काळी<br>पेरणी: मे-जून<br>कापणी: 5 महिने<br>कीटकनाशक: निम तेल`
+},
+
+sugarcane: {
+
+en:`🎋 Sugarcane<br>Soil: Fertile<br>Sowing: Feb<br>Harvest: 10-12 months<br>Pesticide: Organic Compost`,
+mr:`🎋 ऊस<br>माती: सुपीक<br>पेरणी: फेब्रुवारी<br>कापणी: 10-12 महिने<br>कीटकनाशक: सेंद्रिय कंपोस्ट`
+},
+
+potato: {
+
+en:`🥔 Potato<br>Soil: Sandy loam<br>Sowing: Oct<br>Harvest: 3 months<br>Pesticide: Neem Oil`,
+mr:`🥔 बटाटा<br>माती: वालुकामय<br>पेरणी: ऑक्टोबर<br>कापणी: 3 महिने<br>कीटकनाशक: निम तेल`
+},
+
+onion: {
+
+en:`🧅 Onion<br>Soil: Loamy<br>Sowing: Nov<br>Harvest: 4 months<br>Pesticide: Garlic Spray`,
+mr:`🧅 कांदा<br>माती: लोमी<br>पेरणी: नोव्हेंबर<br>कापणी: 4 महिने<br>कीटकनाशक: लसूण स्प्रे`
+},
+
+carrot: {
+
+en:`🥕 Carrot<br>Soil: Sandy<br>Sowing: Oct<br>Harvest: 2-3 months<br>Pesticide: Neem Oil`,
+mr:`🥕 गाजर<br>माती: वालुकामय<br>पेरणी: ऑक्टोबर<br>कापणी: 2-3 महिने<br>कीटकनाशक: निम तेल`
+},
+
+soybean: {
+
+en:`🌱 Soybean<br>Soil: Loamy<br>Sowing: June<br>Harvest: 3-4 months<br>Pesticide: Trichoderma`,
+mr:`🌱 सोयाबीन<br>माती: लोमी<br>पेरणी: जून<br>कापणी: 3-4 महिने<br>कीटकनाशक: ट्रायकोडर्मा`
+}
+
+};
+
+document.getElementById("details").style.display = "block";
+
+document.getElementById("card").innerHTML =
+`<img src="${data[crop].img}">
+<br><br>
+${data[crop][lang]}`;
+
+}
+
+</script>
+
+</body>
+</html>

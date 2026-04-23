@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agro Smart Ultra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+
+<header>
+<nav>
+  <h1>🌱 AgroSmart</h1>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="crop.html">Crops</a>
+    <a href="details.html">Details</a>
+    <a href="tips.html">Tips</a>
+    <span class="toggle" onclick="toggleMode()">🌙</span>
+  </div>
+</nav>
+</header>
+
+<div class="lang" style="text-align:center; color:white;">
+  <a href="index.html">English</a> |
+  <a href="index-marathi.html">मराठी</a>
+</div>
+
+<!-- IMAGE SLIDER -->
+<div class="slider">
+  <div class="slides">
+    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
+    <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027">
+  </div>
+</div>
+
+<section class="hero">
+  <h2>Smart Organic Farming 🌾</h2>
+  <p>Future of Agriculture is Here</p>
+  <a href="crop.html" class="btn">Start Exploring</a>
+</section>
+
+<section class="cards">
+  <div class="card">
+    <h3>🌾 Crop Planner</h3>
+    <p>Plan crops smartly</p>
+  </div>
+
+  <div class="cards">
+
+<a href="crop.html" class="card">
+  <div class="icon">🌾</div>
+  <div class="title">Crop Planner</div>
+  <div class="desc">Plan crops smartly</div>
+</a>
+
+<a href="tips.html" class="card">
+  <div class="icon">🌿</div>
+  <div class="title">Organic Tips</div>
+  <div class="desc">Natural farming methods</div>
+</a>
+
+<a href="details.html" class="card">
+  <div class="icon">🧪</div>
+  <div class="title">Pesticides</div>
+  <div class="desc">Safe pest solutions</div>
+</a>
+
+<a href="contact.html" class="card">
+  <div class="icon">🤖</div>
+  <div class="title">Smart Suggestion</div>
+  <div class="desc">AI-like recommendations</div>
+</a>
+
+</div>
+
+<script>
+function toggleMode(){
+  document.getElementById("body").classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
